@@ -11,7 +11,6 @@ const path = require('path');
     const webhook = core.getInput('wechat_webhook');
     const baseUrl = core.getInput('base_url');
     const blogDir = core.getInput('blog_dir');
-    const messageTemplate = core.getInput('message_template');
 
     if (!webhook) {
       throw new Error('WeChat webhook is required.');
@@ -89,11 +88,10 @@ const path = require('path');
     }
 
     // Prepare message content
-    const render = new Function("return `" + messageTemplate + "`;");
     const message = {
       msgtype: 'markdown',
       markdown: {
-        content: render(),
+        content: `**📢 博客变更通知**\n分支: ${refName}\n提交信息: ${commitMessage}\n提交人: ${actor}\n\n**新增博客文章**:\n${addedBlogs || '无新增博客'}\n\n**更新博客文章**:\n${updatedBlogs || '无更新博客'}`
       }
     };
     // Send message to WeChat robot

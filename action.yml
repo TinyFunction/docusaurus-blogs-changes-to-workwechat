@@ -13,10 +13,6 @@ inputs:
     description: "The directory where your blog posts are stored"
     default: "blog"
     required: false
-  message_template:
-    description: "The template of the message to send"
-    default: "**📢 博客变更通知**\n分支: ${refName}\n提交信息: ${commitMessage}\n提交人: ${actor}\n\n**新增博客文章**:\n${addedBlogs || '无新增博客'}\n\n**更新博客文章**:\n${updatedBlogs || '无更新博客'}"
-    required: false
 
 runs:
   using: "node20" # 使用 Node.js 运行环境
