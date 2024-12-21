@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const exec = require('@actions/exec');
+const github = require('@actions/github');
 const fs = require('fs');
 const matter = require('gray-matter');
 const axios = require('axios');
@@ -15,6 +16,14 @@ const path = require('path');
     if (!webhook) {
       throw new Error('WeChat webhook is required.');
     }
+
+    // 获取 GitHub 上下文信息
+    const context = github.context;
+
+    // 输出一些上下文信息
+    const refName = context.ref.replace('refs/heads/', ''); // 提取 branch 名字
+    const commitMessage = context.payload.head_commit?.message; // 最新提交的 commit
+    const actor = context.actor; // 触发事件的用户
 
     // 定义一个函数，用于从 frontmatter 中提取 slug
     function extractSlugAndTitle(file) {

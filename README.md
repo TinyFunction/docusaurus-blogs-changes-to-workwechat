@@ -38,12 +38,12 @@ Here is how you should configure `actions/checkout@v3` in your workflow:
 
 ## 📦 Inputs
 
-| **Input Name**      | **Description**                                                                             | **Required** | **Default**                                                                                       |
-|----------------------|---------------------------------------------------------------------------------------------|--------------|---------------------------------------------------------------------------------------------------|
-| `wechat_webhook`     | The webhook URL for your Work-WeChat robot.                                                | ✅ Yes       | N/A                                                                                               |
-| `base_url`           | The base URL of your GitHub Pages site (e.g., `https://<yourusername>.github.io/<yourrepo>`).  | ✅ Yes       | N/A                                                                                               |
-| `blog_dir`           | The directory where your blog posts are stored.                                            | ❌ No        | `blog`                                                                                            |
-| `message_template`   | The template of the message to send. Supports placeholders for `addedBlogs`, `updatedBlogs`, `github.*` variables. | ❌ No        | **See default template below.**                                                                  |
+| **Input Name**     | **Description**                                                                                                    | **Required** | **Default**                     |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------ | ------------------------------- |
+| `wechat_webhook`   | The webhook URL for your Work-WeChat robot.                                                                        | ✅ Yes        | N/A                             |
+| `base_url`         | The base URL of your GitHub Pages site (e.g., `https://<yourusername>.github.io/<yourrepo>`).                      | ✅ Yes        | N/A                             |
+| `blog_dir`         | The directory where your blog posts are stored.                                                                    | ❌ No         | `blog`                          |
+| `message_template` | The template of the message to send. Supports placeholders for `addedBlogs`, `updatedBlogs`, `github.*` variables. | ❌ No         | **See default template below.** |
 
 ### **Default Message Template**
 The default message template for Work-WeChat notifications is:
@@ -61,7 +61,13 @@ ${addedBlogs || '无新增博客'}
 ${updatedBlogs || '无更新博客'}
 ```
 
-You can customize this template to match your requirements. All `${github.*}` variables correspond to GitHub Actions' context variables.
+You can customize this template to match your requirements. There are three `${github.*}` variables supported.
+
+| variables     | Github Actions variables         |
+| ------------- | -------------------------------- |
+| refName       | ref_name                         |
+| commitMessage | github.event.head_commit.message |
+| actor         | github.actor                     |
 
 ---
 
