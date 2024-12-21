@@ -11,6 +11,10 @@ const path = require('path');
     const baseUrl = core.getInput('base_url');
     const blogDir = core.getInput('blog_dir');
 
+    if (!webhook) {
+      throw new Error('WeChat webhook is required.');
+    }
+
     // 定义一个函数，用于从 frontmatter 中提取 slug
     function extractSlugAndTitle(file) {
       const content = fs.readFileSync(file, 'utf-8');
@@ -81,8 +85,8 @@ const path = require('path');
         content: ``
       }
     };
-
     // Send message to WeChat robot
+    console.log(message);
     await axios.post(webhook, message, { headers: { 'Content-Type': 'application/json' } });
     console.log('Notification sent to WeChat robot success.');
   } catch (error) {
