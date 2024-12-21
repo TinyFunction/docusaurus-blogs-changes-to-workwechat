@@ -44167,7 +44167,7 @@ const path = __nccwpck_require__(1017);
     const message = {
       msgtype: 'markdown',
       markdown: {
-        content: `**📢 博客变更通知**\n分支: ${refName}\n提交信息: ${commitMessage}\n提交人: ${actor}\n\n**新增博客文章**:\n${addedBlogs || '无新增博客'}\n\n**更新博客文章**:\n${updatedBlogs || '无更新博客'}`
+        content: `**📢 博客变更通知**\n**分支**: ${refName}\n**提交信息**: ${commitMessage}\n**提交人**: ${actor}\n\n**新增博客文章**:\n${addedBlogs || '无新增博客'}\n**更新博客文章**:\n${updatedBlogs || '无更新博客'}`
       }
     };
     // Send message to WeChat robot
