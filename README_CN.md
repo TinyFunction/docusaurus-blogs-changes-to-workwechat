@@ -135,7 +135,7 @@ jobs:
 我们欢迎所有形式的贡献！以下是一些参与方式：
 
 ### 1. 报告问题
-如果你在使用中遇到任何问题，请通过 [GitHub Issues](https://github.com/your-username/docusaurus-blogs-changes-to-workwechat/issues) 提交。
+如果你在使用中遇到任何问题，请通过 [GitHub Issues](https://github.com/TinyFunction/docusaurus-blogs-changes-to-workwechat/issues) 提交。
 
 ### 2. 提出功能建议
 如果你有改进插件的建议或新功能需求，可以在 Issues 中提交功能请求。
@@ -151,7 +151,7 @@ jobs:
 
 1. 克隆项目：
    ```bash
-   git clone https://github.com/your-username/docusaurus-blogs-changes-to-workwechat.git
+   git clone https://github.com/TinyFunction/docusaurus-blogs-changes-to-workwechat.git
    cd docusaurus-blogs-changes-to-workwechat
    ```
 
