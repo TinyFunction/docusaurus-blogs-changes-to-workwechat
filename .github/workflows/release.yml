@@ -27,8 +27,12 @@ jobs:
           mkdir -p release
           cp -R dist action.yml README.md release/
 
-      - name: Upload release artifacts
-        uses: actions/upload-artifact@v4
+      - name: Upload to GitHub Release
+        uses: softprops/action-gh-release@v1
         with:
-          name: docusaurus-blogs-changes-to-workwechat-action
-          path: release
+          files: |
+            dist/**
+            action.yml
+            README.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
