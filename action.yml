@@ -22,3 +22,6 @@ runs:
   using: "node20" # 使用 Node.js 运行环境
   main: "dist/index.js" # 指向编译后的主脚本文件
 
+branding:
+  icon: "send" # 图标
+  color: "green" # 颜色
