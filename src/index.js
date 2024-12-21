@@ -10,6 +10,7 @@ const path = require('path');
     const webhook = core.getInput('wechat_webhook');
     const baseUrl = core.getInput('base_url');
     const blogDir = core.getInput('blog_dir');
+    const messageTemplate = core.getInput('message_template');
 
     if (!webhook) {
       throw new Error('WeChat webhook is required.');
@@ -79,10 +80,11 @@ const path = require('path');
     }
 
     // Prepare message content
+    const render = new Function("return `" + messageTemplate + "`;");
     const message = {
       msgtype: 'markdown',
       markdown: {
-        content: ``
+        content: render(),
       }
     };
     // Send message to WeChat robot
