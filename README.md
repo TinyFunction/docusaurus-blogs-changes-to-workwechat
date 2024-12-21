@@ -88,7 +88,7 @@ jobs:
           fetch-depth: 2  # Ensure we can compare HEAD with HEAD^
 
       - name: Detect blog changes and send notifications
-        uses: TinyFunction/docusaurus-blogs-changes-to-workwechat-action@v1
+        uses: TinyFunction/docusaurus-blogs-changes-to-workwechat@v1.0.0
         with:
           wechat_webhook: ${{ secrets.WECHAT_WEBHOOK }}
           base_url: "https://yourusername.github.io/yourrepo"

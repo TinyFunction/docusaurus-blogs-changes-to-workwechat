@@ -88,7 +88,7 @@ jobs:
           fetch-depth: 2  # 确保拉取最近两次提交
 
       - name: Detect blog changes and send notifications
-        uses: TinyFunction/docusaurus-blogs-changes-to-workwechat-action@v1
+        uses: TinyFunction/docusaurus-blogs-changes-to-workwechat@v1.0.0
         with:
           wechat_webhook: ${{ secrets.WECHAT_WEBHOOK }}
           base_url: "https://yourusername.github.io/yourrepo"
