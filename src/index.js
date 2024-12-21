@@ -24,40 +24,46 @@ const path = require('path');
     let addedBlogs = '';
     let updatedBlogs = '';
     let deletedBlogs = '';
-    await exec.exec(`git diff --diff-filter=A --name-only HEAD^ | grep '^blog/.*\.md$' || true`, [], {
+    await exec.exec(`git diff --diff-filter=A --name-only HEAD^`, [], {
       listeners: {
         stdout: (data) => {
           const changes = data.toString().trim().split('\n');
           changes.forEach((file) => {
-            const { slug, title } = extractSlugAndTitle(file);
-            const link = `${baseUrl}/${blogDir}/${slug}`;
-            addedBlogs += `- [${title}](${link})\n`;
+            if (file.startsWith(blogDir) && file.endsWith('.md')) {
+              const { slug, title } = extractSlugAndTitle(file);
+              const link = `${baseUrl}/${blogDir}/${slug}`;
+              addedBlogs += `- [${title}](${link})\n`;
+            }
           });
         },
       },
     });
 
-    await exec.exec(`git diff --diff-filter=M --name-only HEAD^ | grep '^blog/.*\.md$' || true`, [], {
+    await exec.exec(`git diff --diff-filter=M --name-only HEAD^`, [], {
       listeners: {
         stdout: (data) => {
           const changes = data.toString().trim().split('\n');
           changes.forEach((file) => {
-            const { slug, title } = extractSlugAndTitle(file);
-            const link = `${baseUrl}/${blogDir}/${slug}`;
-            updatedBlogs += `- [${title}](${link})\n`;
+            if (file.startsWith(blogDir) && file.endsWith('.md')) {
+              const { slug, title } = extractSlugAndTitle(file);
+              const link = `${baseUrl}/${blogDir}/${slug}`;
+              updatedBlogs += `- [${title}](${link})\n`;
+            }
           });
         },
       },
     });
 
-    await exec.exec(`git diff --diff-filter=D --name-only HEAD^ | grep '^blog/.*\.md$' || true`, [], {
+    await exec.exec(`git diff --diff-filter=D --name-only HEAD^`, [], {
       listeners: {
         stdout: (data) => {
           const changes = data.toString().trim().split('\n');
           changes.forEach((file) => {
-            const { slug, title } = extractSlugAndTitle(file);
-            const link = `${baseUrl}/${blogDir}/${slug}`;
-            deletedBlogs += `- [${title}](${link})\n`;
+            if (file.startsWith(blogDir) && file.endsWith('.md')) {
+              const { slug, title } = extractSlugAndTitle(file);
+              const link = `${baseUrl}/${blogDir}/${slug}`;
+              deletedBlogs += `- [${title}](${link})\n`;
+            }
           });
         },
       },
