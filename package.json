@@ -1,0 +1,17 @@
+{
+    "name": "docusaurus-blogs-changes-to-workwechat-action",
+    "version": "1.0.0",
+    "description": "Detect Docusaurus blogs changes and send notifications to Work-WeChat Robot",
+    "main": "index.js",
+    "scripts": {
+      "build": "ncc build src/index.js -o dist"
+    },
+    "dependencies": {
+      "gray-matter": "^4.0.3",
+      "axios": "^1.2.1"
+    },
+    "devDependencies": {
+      "@vercel/ncc": "^0.34.0"
+    }
+  }
+  
