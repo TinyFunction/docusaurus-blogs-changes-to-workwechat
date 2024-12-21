@@ -39814,6 +39814,11 @@ const path = __nccwpck_require__(1017);
     const webhook = core.getInput('wechat_webhook');
     const baseUrl = core.getInput('base_url');
     const blogDir = core.getInput('blog_dir');
+    const messageTemplate = core.getInput('message_template');
+
+    if (!webhook) {
+      throw new Error('WeChat webhook is required.');
+    }
 
     // 定义一个函数，用于从 frontmatter 中提取 slug
     function extractSlugAndTitle(file) {
@@ -39879,14 +39884,15 @@ const path = __nccwpck_require__(1017);
     }
 
     // Prepare message content
+    const render = new Function("return `" + messageTemplate + "`;");
     const message = {
       msgtype: 'markdown',
       markdown: {
-        content: ``
+        content: render(),
       }
     };
-
     // Send message to WeChat robot
+    console.log(message);
     await axios.post(webhook, message, { headers: { 'Content-Type': 'application/json' } });
     console.log('Notification sent to WeChat robot success.');
   } catch (error) {
