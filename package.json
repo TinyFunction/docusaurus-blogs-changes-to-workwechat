@@ -4,14 +4,15 @@
     "description": "Detect Docusaurus blogs changes and send notifications to Work-WeChat Robot",
     "main": "index.js",
     "scripts": {
-      "build": "ncc build src/index.js -o dist"
+        "build": "ncc build src/index.js -o dist"
     },
     "dependencies": {
-      "gray-matter": "^4.0.3",
-      "axios": "^1.2.1"
+        "@actions/core": "^1.11.1",
+        "@actions/exec": "^1.1.1",
+        "axios": "^1.2.1",
+        "gray-matter": "^4.0.3"
     },
     "devDependencies": {
-      "@vercel/ncc": "^0.34.0"
+        "@vercel/ncc": "^0.34.0"
     }
-  }
-  
+}
