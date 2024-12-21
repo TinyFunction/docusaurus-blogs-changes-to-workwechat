@@ -1,5 +1,7 @@
 # docusaurus-blogs-changes-to-workwechat-action
 
+[English](./README.md) | [中文](./README_CN.md)
+
 A GitHub Action to detect changes in Docusaurus blog posts and send notifications to a Work-WeChat robot. This action is specifically designed for projects using Docusaurus with blogs stored in a specified directory (default: `blog`).
 
 ---
@@ -39,7 +41,7 @@ Here is how you should configure `actions/checkout@v3` in your workflow:
 | **Input Name**      | **Description**                                                                             | **Required** | **Default**                                                                                       |
 |----------------------|---------------------------------------------------------------------------------------------|--------------|---------------------------------------------------------------------------------------------------|
 | `wechat_webhook`     | The webhook URL for your Work-WeChat robot.                                                | ✅ Yes       | N/A                                                                                               |
-| `base_url`           | The base URL of your GitHub Pages site (e.g., `https://yourusername.github.io/yourrepo`).  | ✅ Yes       | N/A                                                                                               |
+| `base_url`           | The base URL of your GitHub Pages site (e.g., `https://<yourusername>.github.io/<yourrepo>`).  | ✅ Yes       | N/A                                                                                               |
 | `blog_dir`           | The directory where your blog posts are stored.                                            | ❌ No        | `blog`                                                                                            |
 | `message_template`   | The template of the message to send. Supports placeholders for `addedBlogs`, `updatedBlogs`, `github.*` variables. | ❌ No        | **See default template below.**                                                                  |
 
@@ -86,7 +88,7 @@ jobs:
           fetch-depth: 2  # Ensure we can compare HEAD with HEAD^
 
       - name: Detect blog changes and send notifications
-        uses: your-username/docusaurus-blogs-changes-to-workwechat-action@v1
+        uses: TinyFunction/docusaurus-blogs-changes-to-workwechat-action@v1
         with:
           wechat_webhook: ${{ secrets.WECHAT_WEBHOOK }}
           base_url: "https://yourusername.github.io/yourrepo"
@@ -135,7 +137,7 @@ If something goes wrong, the following steps can help:
 
 We welcome contributions! Here’s how you can get involved:
 
-1. **Report Bugs**: If you encounter any issues, please open an issue in the [GitHub repository](https://github.com/your-username/docusaurus-blogs-changes-to-workwechat-action/issues).
+1. **Report Bugs**: If you encounter any issues, please open an issue in the [GitHub repository](https://github.com/TinyFunction/docusaurus-blogs-changes-to-workwechat/issues).
 2. **Suggest Features**: Have an idea to improve this action? Open a feature request in the Issues section.
 3. **Submit Pull Requests**:
    - Fork the repository.
@@ -146,8 +148,8 @@ We welcome contributions! Here’s how you can get involved:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/docusaurus-blogs-changes-to-workwechat-action.git
-   cd docusaurus-blogs-changes-to-workwechat-action
+   git clone https://github.com/TinyFunction/docusaurus-blogs-changes-to-workwechat.git
+   cd docusaurus-blogs-changes-to-workwechat
    ```
 
 2. Install dependencies:

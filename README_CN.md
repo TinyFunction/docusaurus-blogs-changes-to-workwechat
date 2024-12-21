@@ -1,5 +1,7 @@
 # docusaurus-blogs-changes-to-workwechat-action
 
+[English](./README.md) | [中文](./README_CN.md)
+
 一个用于检测 Docusaurus 博客文章变化并通过企业微信机器人发送通知的 GitHub Action。该插件专为使用 Docusaurus 的博客项目设计，支持检测新增和更新的博客文章，并发送自定义格式的消息到企业微信。
 
 ---
@@ -39,7 +41,7 @@ Initial commit detected. Skipping blog change detection.
 | **参数名称**         | **描述**                                                                              | **是否必填** | **默认值**                                                                                       |
 |----------------------|---------------------------------------------------------------------------------------|--------------|---------------------------------------------------------------------------------------------------|
 | `wechat_webhook`     | 企业微信机器人 Webhook 地址。                                                         | ✅ 是        | 无                                                                                               |
-| `base_url`           | GitHub Pages 的基础 URL（例如 `https://yourusername.github.io/yourrepo`）。           | ✅ 是        | 无                                                                                               |
+| `base_url`           | GitHub Pages 的基础 URL（例如 `https://<yourusername>.github.io/<yourrepo>`）。           | ✅ 是        | 无                                                                                               |
 | `blog_dir`           | 博客文章的存储目录。                                                                 | ❌ 否        | `blog`                                                                                            |
 | `message_template`   | 自定义的消息模板，支持占位符（如 `${addedBlogs}`、`${updatedBlogs}`、`${github.*}`）。 | ❌ 否        | **见下方默认模板**                                                                                |
 
@@ -86,7 +88,7 @@ jobs:
           fetch-depth: 2  # 确保拉取最近两次提交
 
       - name: Detect blog changes and send notifications
-        uses: your-username/docusaurus-blogs-changes-to-workwechat-action@v1
+        uses: TinyFunction/docusaurus-blogs-changes-to-workwechat-action@v1
         with:
           wechat_webhook: ${{ secrets.WECHAT_WEBHOOK }}
           base_url: "https://yourusername.github.io/yourrepo"
@@ -133,7 +135,7 @@ jobs:
 我们欢迎所有形式的贡献！以下是一些参与方式：
 
 ### 1. 报告问题
-如果你在使用中遇到任何问题，请通过 [GitHub Issues](https://github.com/your-username/docusaurus-blogs-changes-to-workwechat-action/issues) 提交。
+如果你在使用中遇到任何问题，请通过 [GitHub Issues](https://github.com/your-username/docusaurus-blogs-changes-to-workwechat/issues) 提交。
 
 ### 2. 提出功能建议
 如果你有改进插件的建议或新功能需求，可以在 Issues 中提交功能请求。
@@ -149,8 +151,8 @@ jobs:
 
 1. 克隆项目：
    ```bash
-   git clone https://github.com/your-username/docusaurus-blogs-changes-to-workwechat-action.git
-   cd docusaurus-blogs-changes-to-workwechat-action
+   git clone https://github.com/your-username/docusaurus-blogs-changes-to-workwechat.git
+   cd docusaurus-blogs-changes-to-workwechat
    ```
 
 2. 安装依赖：
